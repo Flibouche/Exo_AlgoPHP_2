@@ -3,7 +3,12 @@
 <?php 
 
 $capitales = [
-     "France"=>"paris"=>"lol",
+    "Pays" => ["France", "Allemagne", "USA", "Italie", "Espagne"],
+    "Capitales" => ["Paris", "Berlin", "Washington", "Rome", "Madrid"],
+    "Lien Wiki" => ""
+
+
+    "France"=>"paris"==>"3ème valeur",
     "Allemagne"=>"berlin",
     "USA"=>"washington",
     "Italie"=>"rome",
