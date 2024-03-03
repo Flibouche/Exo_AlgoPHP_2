@@ -2,21 +2,16 @@
 
 <?php 
 
-$capitales = [
-    "Pays" => ["France", "Allemagne", "USA", "Italie", "Espagne"],
-    "Capitales" => ["Paris", "Berlin", "Washington", "Rome", "Madrid"],
-    "Lien Wiki" => ""
-
-
-    "France"=>"paris"==>"3ème valeur",
-    "Allemagne"=>"berlin",
-    "USA"=>"washington",
-    "Italie"=>"rome",
-    "Espagne"=>"madrid"
+$tableau =
+[
+    "Allemagne" => [
+        "capitale" => "Berlin",
+        "lien wiki" => "https://fr.wikipedia.org/wiki/Berlin"
+    ],
 ];
 
 function afficherTableHTML($capitales) {
-    asort($capitales); // ksort = trier le tableau dans l'ordre alphabétique (de A à Z) sur la clé. krsort pour trier mais reverse. asort pour trier alphabétiquement les capitales et arsort pour l'inverse.
+    asort($capitales);
     $result = "<table border=1>
                 <thead>
                     <tr>
@@ -26,20 +21,19 @@ function afficherTableHTML($capitales) {
                     </tr>
                 </thead>
             <tbody>";
-    foreach($capitales as $pays => $capitale) {
+    foreach($capitales as $pays => $value) {
         $result .= "<tr>
                         <td>".mb_strtoupper($pays)."</td>
-                        <td>".ucfirst($capitale)."</td>
+                        <td>".ucfirst($value["capitale"])."</td>
+                        <td>".($value["lien wiki"])."</td>
+                        <td>".a href="($value["lien wiki"])">Lien wiki</a>"</td>
                     </tr>";
     }
 
-    // .= rajouter du contenu à la variable
-    // .= pour les string (chaine de caractère)
-    // += pour les valeurs numériques (int/float)
     $result .= "</tbody></table>";
     return $result;
 }
 
-echo afficherTableHTML($capitales);
+echo afficherTableHTML($tableau);
 
 ?>
