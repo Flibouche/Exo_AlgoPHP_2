@@ -14,26 +14,14 @@ class Voiture {
         $this->vitesseActuelle = $vitesseActuelle;
     }
 
-    public function getVitesseActuelle()
+    public function getMarque()
     {
-        return $this->vitesseActuelle;
+        return $this->marque;
     }
 
-    public function setVitesseActuelle($vitesseActuelle)
+    public function setMarque($marque)
     {
-        $this->vitesseActuelle = $vitesseActuelle;
-
-        return $this;
-    }
-
-    public function getNbPortes()
-    {
-        return $this->nbPortes;
-    }
- 
-    public function setNbPortes($nbPortes)
-    {
-        $this->nbPortes = $nbPortes;
+        $this->marque = $marque;
 
         return $this;
     }
@@ -50,15 +38,33 @@ class Voiture {
         return $this;
     }
 
-    public function getMarque()
+    public function getNbPortes()
     {
-        return $this->marque;
+        return $this->nbPortes;
     }
 
-    public function setMarque($marque)
+    public function setNbPortes($nbPortes)
     {
-        $this->marque = $marque;
+        $this->nbPortes = $nbPortes;
 
         return $this;
     }
+
+    public function getVitesseActuelle()
+    {
+        return $this->vitesseActuelle;
+    }
+
+    public function setVitesseActuelle($vitesseActuelle)
+    {
+        $this->vitesseActuelle = $vitesseActuelle;
+
+        return $this;
+    }
+
+    public function afficherInformations() {
+        return $this."Nom et modèle du véhicule : ".$this->getModele()
+    }
+
+
 }
