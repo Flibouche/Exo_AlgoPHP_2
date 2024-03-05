@@ -7,18 +7,20 @@ class Voiture {
     private string $modele;
     private int $nbPortes;
     private int $vitesseActuelle;
-    private bool $demarrer = false;
+    private bool $estDemarre = false;
     
     private static $nbVoitures = 0;
 
-    public function __construct(int $idVehicule, string $marque, string $modele, int $nbPortes, int $vitesseActuelle,) {
+    public function __construct(int $idVehicule, string $marque, string $modele, int $nbPortes) {
         self::$nbVoitures++;
         $this->idVehicule = self::$nbVoitures;
         $this->marque = $marque;
         $this->modele = $modele;
         $this->nbPortes = $nbPortes;
-        $this->vitesseActuelle = $vitesseActuelle;
+        $this->vitesseActuelle = 0;
     }
+
+//===================== ID Véhicule =====================// 
 
     public function getIdVehicule()
     {
@@ -32,6 +34,8 @@ class Voiture {
         return $this;
     }
     
+//===================== Marque =====================// 
+
     public function getMarque()
     {
         return $this->marque;
@@ -43,6 +47,8 @@ class Voiture {
 
         return $this;
     }
+
+//===================== Modèle =====================// 
 
     public function getModele()
     {
@@ -56,6 +62,8 @@ class Voiture {
         return $this;
     }
 
+//===================== Nombre de portes =====================// 
+
     public function getNbPortes()
     {
         return $this->nbPortes;
@@ -68,6 +76,8 @@ class Voiture {
         return $this;
     }
 
+//===================== Vitesse Actuelle =====================// 
+
     public function getVitesseActuelle()
     {
         return $this->vitesseActuelle;
@@ -76,30 +86,65 @@ class Voiture {
     public function setVitesseActuelle($vitesseActuelle)
     {
         $this->vitesseActuelle = $vitesseActuelle;
+        if($this->$vitesseActuelle > 1) {
+            $this->accelerer();
+        } else {
+            $this->stopper();
+        }
         
         return $this;
     }
-    
-    public function demarrer(int $vitesse) {
-        if($vitesseActuelle > 1) {
-            $this->demarrer = true;
-            echo "demarré";
-        }
+
+//===================== Demarrer =====================// 
+
+    public function getestDemarrer()
+    {
+        return $this->estDemarre;
+    }
+
+    public function setestDemarrer($demarrer)
+    {
+        $this->estDemarre = $demarrer;
 
         return $this;
     }
 
-    public function stopper(int $vitesse) {
-        if($vitesseActuelle == 0) {
-            $this->demarrer = false;
-            echo "à l'arrêt";
+//===================== Etat =====================// 
+
+    public function getEtat() {
+        if($this->estDemarre == true) {
+            return "demarré";
+        } else {
+            return "est à l'arrêt";
         }
+    }
+    
+//============= Méthodes démarrer/stopper/accélérer/ralentir =============// 
+    
+    public function demarrer() {
+        $this->estDemarre = true;
+        echo "La voiture ".$this." démarre<br><br>";
+
+        return $this;
+    }
+
+    public function stopper() {
+        $this->estDemarre = false;
+        echo "La voiture ".$this." est stoppé<br><br>";
 
         return $this;
     }
 
     public function accelerer(int $vitesse) {
-        $this->accelerer(50);
+        $this->vitesseActuelle+=$vitesse;
+        echo "La voiture ".$this." accélère de ".$this->vitesseActuelle." km / h<br><br>";
+
+        if($this->estDemarre == false) {
+            echo "Le véhicule veut accélérer de XX km / h <br> Pour accélérer, il faut démarrer le véhicule ".$this." ! <br>";
+        } else {
+            return;
+        }
+
 
         return $this;
     }
@@ -109,7 +154,7 @@ class Voiture {
     // }
 
     public function afficherInformations() {
-        return "Infos véhicule ".$this->getIdVehicule()."<br>"."********************"."<br>"."Nom et modèle du véhicule : ".$this."<br>"."Nombre de portes : ".$this->getNbPortes()."<br>"."Le véhicule ".$this->getMarque()." est ".demarrer()."<br>"."Sa vitesse actuelle est de : ".$this->getVitesseActuelle()." km / h"."<br><br>";
+        return "Infos véhicule ".$this->getIdVehicule()."<br>"."********************"."<br>"."Nom et modèle du véhicule : ".$this."<br>"."Nombre de portes : ".$this->getNbPortes()."<br>"."Le véhicule ".$this->getMarque()." est ".$this->getEtat()."<br>"."Sa vitesse actuelle est de : ".$this->getVitesseActuelle()." km / h"."<br><br>";
     }
 
     public function __toString() {

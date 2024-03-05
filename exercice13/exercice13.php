@@ -1,20 +1,27 @@
 <?php
 
-echo "<h1>Exercice n°12</h1>";
+echo "<h1>Exercice n°13</h1>";
 
 spl_autoload_register(function ($class_name) {
     require 'classes/'. $class_name . '.php';
 });
 
 //===================== Marques =====================// 
-$v1 = new Voiture(1, "Peugeot", "408", 5, 0,);
-$v2 = new Voiture(2, "Citroën", "C4", 3, 0,);
+$v1 = new Voiture(1, "Peugeot", "408", 5);
+$v2 = new Voiture(2, "Citroën", "C4", 3);
+
+$v1->demarrer();
+$v1->accelerer(50);
+
+$v2->demarrer();
+$v2->stopper();
+$v2->accelerer(20);
+
+
+
 
 echo $v1->afficherInformations();
 echo $v2->afficherInformations();
-
-
-
 
 
 
