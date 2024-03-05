@@ -7,10 +7,11 @@ spl_autoload_register(function ($class_name) {
 });
 
 //===================== Marques =====================// 
-$v1 = new Voiture("Peugeot", "408", 5);
-$v2 = new Voiture("Citroën", "C4", 3);
+$v1 = new Voiture(1, "Peugeot", "408", 5, 0,);
+$v2 = new Voiture(2, "Citroën", "C4", 3, 0,);
 
-
+echo $v1->afficherInformations();
+echo $v2->afficherInformations();
 
 
 
