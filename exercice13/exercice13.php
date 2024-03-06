@@ -17,12 +17,14 @@ $v2->demarrer();
 $v2->stopper();
 $v2->accelerer(20);
 
+echo $v1->getVitesseActuelle();
+echo $v2->getVitesseActuelle();
 
 
+echo "<br>";
 
 echo $v1->afficherInformations();
 echo $v2->afficherInformations();
-
 
 
 

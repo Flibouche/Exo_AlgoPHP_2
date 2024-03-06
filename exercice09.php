@@ -10,7 +10,7 @@ $elements = [
 
 function afficherRadio($elements) {
     $result =
-        "<form action='/exercice9.php'>";
+        "<form action='/exercice9.php' method='POST'>";
 
     foreach($elements as $choix) {
         $result .= "<input type='radio' id='$choix' name='choix' value='$choix'/>

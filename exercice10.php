@@ -22,52 +22,51 @@ $intituleFormation = [
 ];
 
 function afficherInput($nomsInput) {
-      $result = "<form action='#' method='POST'>";
+      $result = "";
   
       foreach ($nomsInput as $element => $type) {
         $result .= "<label for='$element'>$element&nbsp;:</label><br>
         <input type='$type' id='$element' name='$element' /><br>";
       }
-      $result .= "<br>"."</form>";
+      $result .= "<br>";
   
       return $result;
 }
 
 function radioSexe($sexe) {
-    $result =
-        "<form action='/exercice10.php'>";
+    $result = "";
 
     foreach($sexe as $choix) {
         $result .= "<input type='radio' id='$choix' name='choix' value='$choix'/>
                     <label for='$choix'>$choix</label><br>";
     }
 
-    $result .= "</form>";
     return $result;
 }
   
-function deroulantFormation($intituleFormation) {
-    $result = "<form action='/exercice6.php'>";   
-    $result .= "<label for='genre'>Sélectionnez votre intitulé de formation :</label><br>
+function deroulantFormation($intituleFormation) {  
+    $result = "<label for='genre'>Sélectionnez votre intitulé de formation :</label><br>
                 <select name='genre' id='genre'>";
 
     foreach($intituleFormation as $intitule) {
         $result .= "<option value='$intitule'>$intitule</option>";
     }
 
-    $result .= "</select></form>";
+    $result .= "</select><br>";
     return $result;
 }
 
 function afficherFormulaire($nomsInput, $sexe, $intituleFormation) {
-    echo afficherInput($nomsInput);
-    echo radioSexe($sexe);
-    echo deroulantFormation($intituleFormation);
-    
-    return;
+    $result = "<form action='#' method='POST'>";
+        $result .= afficherInput($nomsInput);
+        $result .= radioSexe($sexe);
+        $result .= deroulantFormation($intituleFormation);
+        $result .= "<input type='submit' name='submit' value='Envoyer'>";
+    $result .= "</form>";
+    return $result;
 }
 
 echo afficherFormulaire($nomsInput, $sexe, $intituleFormation);
-echo "<input type='submit' name='submit' value='Envoyer'>";
+
 
 ?>
